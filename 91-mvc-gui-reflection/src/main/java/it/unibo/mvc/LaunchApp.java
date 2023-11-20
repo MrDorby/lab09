@@ -4,6 +4,7 @@ import it.unibo.mvc.api.DrawNumberController;
 import it.unibo.mvc.controller.DrawNumberControllerImpl;
 import it.unibo.mvc.model.DrawNumberImpl;
 import it.unibo.mvc.view.DrawNumberSwingView;
+import it.unibo.mvc.view.DrawNumberViewImpl;
 
 /**
  * Application entry-point.
@@ -24,8 +25,21 @@ public final class LaunchApp {
      * @throws IllegalArgumentException in case of reflection issues
      */
     public static void main(final String... args) {
+        /*final var model = new DrawNumberImpl();
+        final DrawNumberController app = new DrawNumberControllerImpl(model);
+        app.addView(new DrawNumberSwingView());*/
+
         final var model = new DrawNumberImpl();
         final DrawNumberController app = new DrawNumberControllerImpl(model);
+        app.addView(new DrawNumberViewImpl());
         app.addView(new DrawNumberSwingView());
+        app.addView(new DrawNumberSwingView());
+        /*Code written by me */
+        /*for(int i=0; i<5; i++){
+            app.addView(new DrawNumberSwingView());
+        }*/
+
+        /*Reflection Loading */
+
     }
 }
