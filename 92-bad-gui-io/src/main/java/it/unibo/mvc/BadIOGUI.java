@@ -10,7 +10,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -42,9 +45,19 @@ public class BadIOGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+
+        /*Code written by me */
+        final JPanel newPanel = new JPanel();
+        final JButton read = new JButton("Read");
+        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.LINE_AXIS));
+        canvas.add(newPanel, BorderLayout.CENTER);
+        newPanel.add(write);
+        newPanel.add(read);
+
+        //canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         /*
          * Handlers
          */
@@ -66,6 +79,29 @@ public class BadIOGUI {
                 }
             }
         });
+
+        read.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                try (BufferedReader bf = new BufferedReader(new FileReader(PATH))) {
+                    System.out.println(bf.readLine());
+                }catch(IOException e){
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
+                }
+            }
+
+            /*@Override
+            public void actionPerformed(final ActionEvent arg0) {
+                //System.out.println("Read");
+                PrintStream ps = System.out;
+                ps.println("Premuto il pulsante Read");
+            }*/
+
+            
+            
+        });
     }
 
     private void display() {
@@ -86,6 +122,8 @@ public class BadIOGUI {
          * flag makes the OS window manager take care of the default positioning
          * on screen. Results may vary, but it is generally the best choice.
          */
+        frame.pack();
+
         frame.setLocationByPlatform(true);
         /*
          * OK, ready to push the frame onscreen
