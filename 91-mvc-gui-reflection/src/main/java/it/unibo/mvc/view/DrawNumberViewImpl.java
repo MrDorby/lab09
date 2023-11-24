@@ -1,20 +1,13 @@
 package it.unibo.mvc.view;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import it.unibo.mvc.api.DrawNumberController;
 import it.unibo.mvc.api.DrawNumberView;
 import it.unibo.mvc.api.DrawResult;
 
 public class DrawNumberViewImpl implements DrawNumberView{
-;
+    
     private static final String NEW_GAME = ": a new game starts!";
 
 
