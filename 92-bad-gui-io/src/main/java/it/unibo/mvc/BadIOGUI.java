@@ -85,7 +85,7 @@ public class BadIOGUI {
             @Override
             public void actionPerformed(ActionEvent arg0){
                 try (BufferedReader bf = new BufferedReader(new FileReader(PATH))) {
-                    System.out.println(bf.readLine());
+                    System.out.println(bf.readLine());          //Legge solo una riga...
                 }catch(IOException e){
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace();
